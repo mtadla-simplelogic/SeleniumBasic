@@ -45,6 +45,7 @@ public class Ex1_FormTest extends TestBase {
 
     public WebElement getRandomElement(List<WebElement> elements) {
         Random rnd = new Random();
-        return elements.get(rnd.nextInt(elements.size()));
+        int randomListIndex = rnd.nextInt(elements.size());
+        return elements.get(randomListIndex);
     }
 }
