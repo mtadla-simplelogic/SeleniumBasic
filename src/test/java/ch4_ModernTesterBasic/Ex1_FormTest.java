@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.FileAssert;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -34,7 +33,7 @@ public class Ex1_FormTest extends TestBase {
         List<WebElement> professions = driver.findElements(By.name("gridCheckboxProfession"));
         Assert.assertTrue(professions.size() > 0);
 
-        for (WebElement profession: professions){
+        for (WebElement profession : professions) {
             profession.click();
         }
 
@@ -47,21 +46,14 @@ public class Ex1_FormTest extends TestBase {
         Select seleniumCommands = new Select(driver.findElement(By.id("selectSeleniumCommands")));
         List<WebElement> allSeleniumCommandsOptions = seleniumCommands.getOptions();
 
-        for (WebElement element : allSeleniumCommandsOptions){
+        for (WebElement element : allSeleniumCommandsOptions) {
             element.click();
         }
-
-
 
 
         WebElement fileUpload = driver.findElement(By.id("chooseFile"));
         File file = new File("src/main/resources/file.txt");
         fileUpload.sendKeys(file.getAbsolutePath());
-
-
-
-
-
 
         driver.findElement(By.className("btn-primary")).click();
         String msg = driver.findElement(By.id("validator-message")).getText();
