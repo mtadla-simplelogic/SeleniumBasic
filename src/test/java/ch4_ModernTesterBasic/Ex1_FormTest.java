@@ -3,6 +3,7 @@ package ch4_ModernTesterBasic;
 import ch3_TestBase.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -35,7 +36,13 @@ public class Ex1_FormTest extends TestBase {
             profession.click();
         }
 
-        //tutaj dopisz dalsza czest testu
+        Select continents = new Select(driver.findElement(By.id("selectContinents")));
+
+        // continents.selectByIndex(2);
+        continents.selectByValue("europe");
+        // continents.selectByVisibleText("Europe");
+
+
 
         driver.findElement(By.className("btn-primary")).click();
 
