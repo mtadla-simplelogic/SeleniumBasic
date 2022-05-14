@@ -5,8 +5,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.FileAssert;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.util.List;
 import java.util.Random;
 
@@ -42,12 +44,28 @@ public class Ex1_FormTest extends TestBase {
         continents.selectByValue("europe");
         // continents.selectByVisibleText("Europe");
 
+        Select seleniumCommands = new Select(driver.findElement(By.id("selectSeleniumCommands")));
+        List<WebElement> allSeleniumCommandsOptions = seleniumCommands.getOptions();
+
+        for (WebElement element : allSeleniumCommandsOptions){
+            element.click();
+        }
+
+
+
+
+        WebElement fileUpload = driver.findElement(By.id("chooseFile"));
+        File file = new File("src/main/resources/file.txt");
+        fileUpload.sendKeys(file.getAbsolutePath());
+
+
+
+
 
 
         driver.findElement(By.className("btn-primary")).click();
-
         String msg = driver.findElement(By.id("validator-message")).getText();
-        Assert.assertEquals(msg, "Form send with success!");
+        Assert.assertEquals(msg, "Form send with success");
     }
 
     public WebElement getRandomElement(List<WebElement> elements) {
