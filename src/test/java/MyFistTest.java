@@ -23,12 +23,12 @@ public class MyFistTest {
     }
 
     @BeforeMethod
-    public void beforeEachTestMethod(){
+    public void beforeEachTestMethod() {
         System.out.println(">> I was executed BEFORE! each test");
     }
 
     @AfterMethod
-    public void afterEachTestMethod(){
+    public void afterEachTestMethod() {
         System.out.println(">> I was executed AFTER! each test");
     }
 
