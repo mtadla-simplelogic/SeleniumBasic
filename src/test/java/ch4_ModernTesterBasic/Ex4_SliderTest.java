@@ -20,7 +20,6 @@ public class Ex4_SliderTest extends TestBase {
         moveSliderTo(30);
         moveSliderTo(20);
         moveSliderTo(65);
-
     }
 
     private void moveSliderTo(int expectedValue) {
