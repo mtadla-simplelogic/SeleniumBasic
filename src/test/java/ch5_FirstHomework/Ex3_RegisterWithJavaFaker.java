@@ -14,7 +14,7 @@ import java.util.Locale;
 public class Ex3_RegisterWithJavaFaker extends TestBase {
 
     @Test
-    public void shouldRegisterNewUser(){
+    public void shouldRegisterNewUser() {
         driver.get("http://146.59.32.4/index.php");
 
         Faker faker = new Faker();
@@ -22,10 +22,7 @@ public class Ex3_RegisterWithJavaFaker extends TestBase {
         String firstName = faker.name().firstName();
         String lastName = faker.name().lastName();
 
-        FakeValuesService fakeValuesService = new FakeValuesService(
-                new Locale("en-GB"), new RandomService());
 
-        String email = fakeValuesService.bothify("????##@gmail.com");
 
         driver.findElement(By.cssSelector(".user-info a")).click();
 
@@ -33,7 +30,7 @@ public class Ex3_RegisterWithJavaFaker extends TestBase {
 
         driver.findElement(By.name("firstname")).sendKeys(firstName);
         driver.findElement(By.name("lastname")).sendKeys(lastName);
-        driver.findElement(By.cssSelector("#customer-form [name='email']")).sendKeys(email);
+        driver.findElement(By.cssSelector("#customer-form [name='email']")).sendKeys(getRandomEmail());
         driver.findElement(By.name("password")).sendKeys("asdiujasiduhasd");
 
         driver.findElements(By.name("id_gender")).get(0).click();
@@ -44,6 +41,13 @@ public class Ex3_RegisterWithJavaFaker extends TestBase {
 
         String userName = driver.findElement(By.cssSelector(".account")).getText();
         Assert.assertEquals(userName, firstName + " " + lastName);
+    }
+
+    private String getRandomEmail() {
+        FakeValuesService fakeValuesService = new FakeValuesService(
+                new Locale("en-GB"), new RandomService());
+
+        return fakeValuesService.bothify("????##@gmail.com");
     }
 
 }

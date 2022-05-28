@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 public class Ex2_RegisterNewUser extends TestBase {
 
     @Test
-    public void shouldRegisterNewUser(){
+    public void shouldRegisterNewUser() {
         driver.get("http://146.59.32.4/index.php");
 
         driver.findElement(By.cssSelector(".user-info a")).click();
@@ -32,7 +32,7 @@ public class Ex2_RegisterNewUser extends TestBase {
         Assert.assertEquals(userName, "Jan Kowalski");
     }
 
-    private String getRandomEmail(){
+    private String getRandomEmail() {
         return RandomStringUtils.randomAlphabetic(10) + "@wp.pl";
     }
 }
