@@ -75,5 +75,15 @@ public class Ex3_LoadingBar extends TestBase {
         wait.until(ExpectedConditions.attributeToBe(By.cssSelector(".ui-progressbar-value"), "class",
                 "ui-progressbar-value ui-corner-left ui-widget-header ui-progressbar-complete ui-corner-right"));
     }
+
+
+    @Test
+    public void shouldWaitForLoadingBarWithLambda() {
+        driver.get("https://seleniumui.moderntester.pl/progressbar.php");
+
+        wait.until(c -> driver.findElement(By.cssSelector(".ui-progressbar-value"))
+                .getAttribute("class")
+                .contains("ui-progressbar-complete"));
+    }
 }
 
