@@ -75,7 +75,7 @@ public class Ex6_Tables extends TestBase {
     }
 
     @Test
-    public void shouldPrintAllMountainsNamesAnHeights () {
+    public void shouldPrintAllMountainsNamesAnHeights() {
         driver.get("https://seleniumui.moderntester.pl/table.php");
 
         List<WebElement> rows = driver.findElements(By.cssSelector("tbody tr"));
@@ -89,5 +89,27 @@ public class Ex6_Tables extends TestBase {
             System.out.println(peak + " has height: " + height);
         }
 
+    }
+
+    @Test
+    public void shouldPrintMountainsOver4000() {
+        driver.get("https://seleniumui.moderntester.pl/table.php");
+
+        List<WebElement> rows = driver.findElements(By.cssSelector("tbody tr"));
+        Assert.assertTrue(rows.size() > 0);
+
+        for (WebElement row : rows) {
+            String rank = row.findElement(By.cssSelector("th")).getText();
+
+            List<WebElement> rowCells =  row.findElements(By.cssSelector("td"));
+            String peak = rowCells.get(0).getText();
+            String countries = rowCells.get(2).getText();
+
+            int height = Integer.parseInt(row.findElement(By.xpath("td[4]")).getText());
+
+            if (height > 4000) {
+                System.out.println(rank + ". " + peak + ", " + countries + ", " + height);
+            }
+        }
     }
 }

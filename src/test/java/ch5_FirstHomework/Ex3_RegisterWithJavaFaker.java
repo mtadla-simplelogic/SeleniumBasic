@@ -19,6 +19,7 @@ public class Ex3_RegisterWithJavaFaker extends TestBase {
 
         Faker faker = new Faker();
 
+        
         String firstName = faker.name().firstName();
         String lastName = faker.name().lastName();
 
