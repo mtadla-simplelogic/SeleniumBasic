@@ -25,4 +25,33 @@ public class Ex5_DragAndDrop extends TestBase {
 
         Assert.assertEquals(drop.getText(), "Dropped!");
     }
+
+    @Test
+    public void shouldDragAndDropV2() {
+        driver.get("https://seleniumui.moderntester.pl/droppable.php");
+
+        WebElement drag = driver.findElement(By.id("draggable"));
+        WebElement drop = driver.findElement(By.id("droppable"));
+
+        Actions actions = new Actions(driver);
+
+        actions.dragAndDrop(drag, drop)
+                .perform();
+
+        Assert.assertEquals(drop.getText(), "Dropped!");
+    }
+
+    @Test
+    public void shouldDragAndDropV3() {
+        driver.get("https://seleniumui.moderntester.pl/droppable.php");
+
+        WebElement drag = driver.findElement(By.id("draggable"));
+        WebElement drop = driver.findElement(By.id("droppable"));
+
+        Actions actions = new Actions(driver);
+
+
+
+        Assert.assertEquals(drop.getText(), "Dropped!");
+    }
 }
