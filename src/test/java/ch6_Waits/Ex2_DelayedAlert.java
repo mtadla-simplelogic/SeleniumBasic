@@ -1,6 +1,7 @@
 package ch6_Waits;
 
 import ch3_TestBase.TestBase;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,6 +24,7 @@ public class Ex2_DelayedAlert extends TestBase {
         wait.until(ExpectedConditions.alertIsPresent());
 
         driver.switchTo().alert().accept();
+
 
         WebElement alertLbl = driver.findElement(By.cssSelector("#delayed-alert-label"));
         Assert.assertEquals(alertLbl.getText(), "OK button pressed");
