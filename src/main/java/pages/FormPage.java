@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,6 +35,17 @@ public class FormPage {
 
     @FindBy(css = "[name='gridRadiosSex']")
     private List<WebElement> genders;
+
+
+    // obsl listy lat dośw.
+    // obsl profession
+    // obsl selekt selenium commands
+    // obsl uploadu pliku
+    // obsl przycisku SignIn
+    //
+    // obs = WebElement + metoda -> uzycie w teście
+    // spodziewany rezsulatat -> test przechodzi na zielono
+
 
 
     public void selectContinent(String continent){
