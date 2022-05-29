@@ -50,68 +50,82 @@ public class FormPage {
     @FindBy(css = "[name='gridCheckboxProfession']")
     private List<WebElement> professions;
 
-    public void submitForm() {
+    public FormPage submitForm() {
         submitButton.click();
+        return this;
     }
 
-    public void selectRandomProfession() {
+    public FormPage selectRandomProfession() {
         getRandomElement(professions).click();
+        return this;
     }
 
-    public void selectRandomkExperiences() {
+    public FormPage selectRandomkExperiences() {
         getRandomElement(experiences).click();
+        return this;
     }
 
-    public void selectAllSeleniumCommands() {
+    public FormPage selectAllSeleniumCommands() {
         List<WebElement> allSeleniumOptions = new Select(selectSeleniumCommands).getOptions();
 
         for (WebElement option : allSeleniumOptions) {
             option.click();
         }
+        return this;
     }
 
-    public void selectAllSeleniumCommandsV2() {
+    public FormPage selectAllSeleniumCommandsV2() {
         int quantityOfOptions = new Select(selectSeleniumCommands).getOptions().size();
 
         for (int i = 0; i < quantityOfOptions; i++) {
             selectSeleniumCommand(i);
         }
+        return this;
     }
 
-    public void selectSeleniumCommand(String seleniumCommand) {
+    public FormPage selectSeleniumCommand(String seleniumCommand) {
         new Select(selectSeleniumCommands).selectByValue(seleniumCommand);
+        return this;
     }
 
-    public void selectSeleniumCommand(int index) {
+    public FormPage selectSeleniumCommand(int index) {
         new Select(selectSeleniumCommands).selectByIndex(index);
+        return this;
     }
 
-    public void uploadFile(File file) {
+    public FormPage uploadFile(File file) {
         fileInput.sendKeys(file.getAbsolutePath());
+        return this;
     }
 
-    public void selectContinent(String continent) {
+    public FormPage selectContinent(String continent) {
         new Select(selectContinents).selectByValue(continent);
+        return this;
     }
 
-    public void selectRandomGender() {
+    public FormPage selectRandomGender() {
         getRandomElement(genders).click();
+        return this;
     }
 
-    public void setFirstName(String firstName) {
+    public FormPage setFirstName(String firstName) {
         this.firstName.sendKeys(firstName);
+        return this;
     }
 
-    public void setLastName(String lastName) {
+    public FormPage setLastName(String lastName) {
         this.lastName.sendKeys(lastName);
+        return this;
     }
 
-    public void setEmail(String email) {
+    public FormPage setEmail(String email) {
         this.email.sendKeys(email);
+        return this;
     }
 
-    public void setAge(String age) {
+    public FormPage setAge(String age) {
         this.age.sendKeys(age);
+        return this;
     }
 
     public String getValidationMsg() {
