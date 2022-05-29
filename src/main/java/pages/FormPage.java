@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -39,8 +38,29 @@ public class FormPage {
     @FindBy(css = "#chooseFile")
     private WebElement fileInput;
 
+    @FindBy(css = ".btn-primary")
+    private WebElement submitButton;
+
     @FindBy(css = "[name='gridRadiosSex']")
     private List<WebElement> genders;
+
+    @FindBy(css = "[name='gridRadiosExperience']")
+    private List<WebElement> experiences;
+
+    @FindBy(css = "[name='gridCheckboxProfession']")
+    private List<WebElement> professions;
+
+    public void submitForm() {
+        submitButton.click();
+    }
+
+    public void selectRandomProfession() {
+        getRandomElement(professions).click();
+    }
+
+    public void selectRandomkExperiences() {
+        getRandomElement(experiences).click();
+    }
 
     public void selectAllSeleniumCommands() {
         List<WebElement> allSeleniumOptions = new Select(selectSeleniumCommands).getOptions();

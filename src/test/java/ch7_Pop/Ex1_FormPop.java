@@ -11,24 +11,23 @@ public class Ex1_FormPop extends TestBase {
 
     @Test
     public void shouldFillFormWithSuccess() {
+        FormPage formPage = new FormPage(driver);
+        File file = new File("src/main/resources/file.txt");
 
         driver.get("https://seleniumui.moderntester.pl/form.php");
-
-        FormPage formPage = new FormPage(driver);
 
         formPage.setFirstName("Jan");
         formPage.setLastName("Kowalski");
         formPage.setEmail("j.k23@wp.pl");
         formPage.setAge("23");
         formPage.selectRandomGender();
+        formPage.selectRandomkExperiences();
+        formPage.selectRandomProfession();
         formPage.selectContinent("europe");
-
         formPage.selectSeleniumCommand("browser-commands");
         formPage.selectSeleniumCommand("switch-commands");
-
-        File file = new File("src/main/resources/file.txt");
         formPage.uploadFile(file);
-
+        formPage.submitForm();
 
         Assert.assertEquals(formPage.getValidationMsg(), "Form send with success");
     }
