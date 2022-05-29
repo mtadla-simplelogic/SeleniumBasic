@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.File;
 import java.util.List;
 import java.util.Random;
 
@@ -32,6 +33,8 @@ public class FormPage {
 
     @FindBy(css = "#selectContinents")
     private WebElement selectContinents;
+    @FindBy(css = "#chooseFile")
+    private WebElement fileInput;
 
     @FindBy(css = "[name='gridRadiosSex']")
     private List<WebElement> genders;
@@ -44,9 +47,12 @@ public class FormPage {
     // obsl przycisku SignIn
     //
     // obs = WebElement + metoda -> uzycie w teście
-    // spodziewany rezsulatat -> test przechodzi na zielono
+    // spodziewany rezultat -> test przechodzi na zielono
 
 
+    public void uploadFile(File file){
+        fileInput.sendKeys(file.getAbsolutePath());
+    }
 
     public void selectContinent(String continent){
         new Select(selectContinents).selectByValue(continent);
