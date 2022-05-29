@@ -13,11 +13,28 @@ public class FormPage {
     @FindBy(css = "#inputFirstName3")
     private WebElement firstName;
 
-    // 3 pola: lastName, email, age
-    // 3 metody: setLastName, setEmail, setAge
-    // dopisac uzycie tych 3 metod w teście
+    @FindBy(css = "#inputLastName3")
+    private WebElement lastName;
 
-    public void setFirstName(String firstName){
+    @FindBy(css = "#inputEmail3")
+    private WebElement email;
+
+    @FindBy(css = "#inputAge3")
+    private WebElement age;
+
+    public void setFirstName(String firstName) {
         this.firstName.sendKeys(firstName);
     }
+
+    public void setLastName(String lastName) {
+        this.lastName.sendKeys(lastName);
+    }
+
+    public void setEmail(String email) {
+        this.email.sendKeys(email);
+    }
+    public void setAge(String age) {
+        this.age.sendKeys(age);
+    }
+
 }

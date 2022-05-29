@@ -11,5 +11,8 @@ public class Ex1_FormPop extends TestBase {
         driver.get("https://seleniumui.moderntester.pl/form.php");
         FormPage formPage = new FormPage(driver);
         formPage.setFirstName("Jan");
+        formPage.setLastName("Kowalski");
+        formPage.setEmail("j.k23@wp.pl");
+        formPage.setAge("23");
     }
 }
