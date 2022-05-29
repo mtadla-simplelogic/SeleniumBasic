@@ -23,6 +23,9 @@ public class Ex1_FormPop extends TestBase {
         formPage.selectRandomGender();
         formPage.selectContinent("europe");
 
+        formPage.selectSeleniumCommand("browser-commands");
+        formPage.selectSeleniumCommand("switch-commands");
+
         File file = new File("src/main/resources/file.txt");
         formPage.uploadFile(file);
 

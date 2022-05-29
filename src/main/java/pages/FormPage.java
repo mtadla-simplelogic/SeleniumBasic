@@ -33,32 +33,48 @@ public class FormPage {
 
     @FindBy(css = "#selectContinents")
     private WebElement selectContinents;
+
+    @FindBy(css = "#selectSeleniumCommands")
+    private WebElement selectSeleniumCommands;
     @FindBy(css = "#chooseFile")
     private WebElement fileInput;
 
     @FindBy(css = "[name='gridRadiosSex']")
     private List<WebElement> genders;
 
+    public void selectAllSeleniumCommands() {
+        List<WebElement> allSeleniumOptions = new Select(selectSeleniumCommands).getOptions();
 
-    // obsl listy lat dośw.
-    // obsl profession
-    // obsl selekt selenium commands
-    // obsl uploadu pliku
-    // obsl przycisku SignIn
-    //
-    // obs = WebElement + metoda -> uzycie w teście
-    // spodziewany rezultat -> test przechodzi na zielono
+        for (WebElement option : allSeleniumOptions) {
+            option.click();
+        }
+    }
 
+    public void selectAllSeleniumCommandsV2() {
+        int quantityOfOptions = new Select(selectSeleniumCommands).getOptions().size();
 
-    public void uploadFile(File file){
+        for (int i = 0; i < quantityOfOptions; i++) {
+            selectSeleniumCommand(i);
+        }
+    }
+
+    public void selectSeleniumCommand(String seleniumCommand) {
+        new Select(selectSeleniumCommands).selectByValue(seleniumCommand);
+    }
+
+    public void selectSeleniumCommand(int index) {
+        new Select(selectSeleniumCommands).selectByIndex(index);
+    }
+
+    public void uploadFile(File file) {
         fileInput.sendKeys(file.getAbsolutePath());
     }
 
-    public void selectContinent(String continent){
+    public void selectContinent(String continent) {
         new Select(selectContinents).selectByValue(continent);
     }
 
-    public void selectRandomGender(){
+    public void selectRandomGender() {
         getRandomElement(genders).click();
     }
 
@@ -73,11 +89,12 @@ public class FormPage {
     public void setEmail(String email) {
         this.email.sendKeys(email);
     }
+
     public void setAge(String age) {
         this.age.sendKeys(age);
     }
 
-    public String getValidationMsg(){
+    public String getValidationMsg() {
         return validationMsg.getText();
     }
 
