@@ -13,7 +13,7 @@ public class Ex2_FormFluentPop extends TestBase {
     File file = new File("src/main/resources/file.txt");
 
     @BeforeMethod
-    public void testSetup(){
+    public void testSetup() {
         formPage = new FormPage(driver);
         driver.get("https://seleniumui.moderntester.pl/form.php");
     }
@@ -34,5 +34,23 @@ public class Ex2_FormFluentPop extends TestBase {
                 .submitForm();
 
         Assert.assertEquals(formPage.getValidationMsg(), "Form send with success");
+    }
+
+    @Test
+    public void shouldFillFormWithSuccess2() {
+        Assert.assertEquals(
+                formPage.setFirstName("Jan")
+                        .setLastName("Kowalski")
+                        .setEmail("j.k23@wp.pl")
+                        .setAge("23")
+                        .selectRandomGender()
+                        .selectRandomkExperiences()
+                        .selectRandomProfession()
+                        .selectContinent("europe")
+                        .selectSeleniumCommand("browser-commands")
+                        .selectSeleniumCommand("switch-commands")
+                        .uploadFile(file)
+                        .submitForm()
+                        .getValidationMsg(), "Form send with success");
     }
 }
