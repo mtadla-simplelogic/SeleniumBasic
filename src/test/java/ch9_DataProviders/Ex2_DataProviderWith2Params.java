@@ -1,4 +1,4 @@
-package ch8_scroll;
+package ch9_DataProviders;
 
 import ch3_TestBase.TestBase;
 import org.openqa.selenium.By;

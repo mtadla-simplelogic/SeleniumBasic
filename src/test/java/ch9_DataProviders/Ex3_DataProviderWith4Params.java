@@ -1,4 +1,4 @@
-package ch8_scroll;
+package ch9_DataProviders;
 
 import ch3_TestBase.TestBase;
 import org.openqa.selenium.By;
@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class Ex2_DataProviderWith4Params extends TestBase {
+public class Ex3_DataProviderWith4Params extends TestBase {
     @DataProvider(name = "form-provider")
     public Object[][] getParameters() {
         return new Object[][]{
