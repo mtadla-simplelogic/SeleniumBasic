@@ -2,6 +2,7 @@ package ch6_Waits;
 
 import ch3_TestBase.TestBase;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -84,6 +85,32 @@ public class Ex3_LoadingBar extends TestBase {
         wait.until(c -> driver.findElement(By.cssSelector(".ui-progressbar-value"))
                 .getAttribute("class")
                 .contains("ui-progressbar-complete"));
+    }
+
+    @Test
+    public void shouldLogCompleteState() {
+        driver.get("https://seleniumui.moderntester.pl/progressbar.php");
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println(isDisplayed(By.cssSelector(".ui-progressbar-complete")));
+            hardSleep();
+        }
+    }
+
+    public boolean isDisplayed(By by) {
+        try {
+            return driver.findElement(by).isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    void hardSleep() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 
